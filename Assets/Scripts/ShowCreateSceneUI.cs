@@ -12,6 +12,11 @@ public class ShowCreateSceneUI : MonoBehaviour
     [SerializeField] private GameObject mageImage;
     [SerializeField] private GameObject archerImage;
 
+    [SerializeField] private GameObject characterObject;
+
+    [SerializeField] private GameObject inputPlayerNameField;
+    [SerializeField] private GameObject setPlayerNameText;
+
     [SerializeField] private Text jobInfoText;
 
     public int jobImageNumber = 1;
@@ -21,27 +26,39 @@ public class ShowCreateSceneUI : MonoBehaviour
         leftArrow.SetActive(true);
         rightArrow.SetActive(true);
     }
-    public void ShowCharacterImage()
+
+    public void ClearCharacterImage()
     {
         warriorImage.SetActive(false);
         mageImage.SetActive(false);
         archerImage.SetActive(false);
+        jobInfoText.text = " ";
+    }
+
+    public void ShowCharacterImage()
+    {
+        ClearCharacterImage();
 
         if (jobImageNumber == 1)
         {
             warriorImage.SetActive(true);
-            jobInfoText.text = warriorImage.GetComponent<PlayerInfo>().jobInfoPrompt();
         }
         else if (jobImageNumber == 2)
         {
             mageImage.SetActive(true);
-            jobInfoText.text = mageImage.GetComponent<PlayerInfo>().jobInfoPrompt();
         }
         else if (jobImageNumber == 3)
         {
             archerImage.SetActive(true);
-            jobInfoText.text = archerImage.GetComponent<PlayerInfo>().jobInfoPrompt();
         }
+
+        jobInfoText.text = characterObject.GetComponent<PlayerInfo>().jobInfoPrompt(jobImageNumber);
     }
+
+    public void ShowInputPlayerNameImage()
+    {
+        inputPlayerNameField.SetActive(true);
+        setPlayerNameText.SetActive(true);
+    }   
 
 }

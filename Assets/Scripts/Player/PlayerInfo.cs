@@ -4,11 +4,33 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    public PlayerData data;
+    [SerializeField] private PlayerData warriorData;
+    [SerializeField] private PlayerData mageData;
+    [SerializeField] private PlayerData archerData;
 
-    public string jobInfoPrompt()
+    [SerializeField] private PlayerData characterData;
+    public string characterName;
+
+
+
+    public string jobInfoPrompt(int jobnumber)
     {
-        string str = $"{data.playerJobName}\n{data.jobDescription}\n{data.jobDifficulty}";
+        if (jobnumber == 1)
+        {
+            characterData = warriorData;
+        }
+        else if (jobnumber == 2)
+        {
+            characterData = mageData;
+        }
+        else if (jobnumber == 3)
+        {
+            characterData = archerData;
+        }
+
+        string str = $"{characterData.playerJobName}\n{characterData.jobDescription}\n{characterData.jobDifficulty}";
         return str;
     }
+
+
 }

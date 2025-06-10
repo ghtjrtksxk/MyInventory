@@ -1,32 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class CreateUIManager : MonoBehaviour
 {
-    public GameObject selectJobObjects;
+    [SerializeField] private GameObject selectJobObjects;
+
+    [SerializeField] private GameObject characterObject;
+    [SerializeField] private Text playerName;
 
     private ShowCreateSceneUI _showCreateSceneUI;
+    private PlayerInfo _playerInfo;
 
     bool isCharacterImage = false;
+    bool isPlayerName = false;
 
     private void Start()
     {
         _showCreateSceneUI = selectJobObjects.GetComponent<ShowCreateSceneUI>();
+        _playerInfo = characterObject.GetComponent<PlayerInfo>();
     }
     public void CreateButtonClick()
     {
         if (!isCharacterImage)
         {
-            _showCreateSceneUI.ShowArrowImage();
-            _showCreateSceneUI.ShowCharacterImage();
+            if (!isPlayerName)
+            {
+                _showCreateSceneUI.ShowArrowImage();
+                _showCreateSceneUI.ShowCharacterImage();
 
-            isCharacterImage = true;
+                isCharacterImage = true;
+                isPlayerName = true;
+            }
+            else
+            {
+                _playerInfo.characterName = playerName.text;
+                SceneManager.LoadScene("MainScene");
+            }
         }
         else
         {
-            SceneManager.LoadScene("MainScene");
+            _showCreateSceneUI.ClearCharacterImage();
+            _showCreateSceneUI.ShowInputPlayerNameImage();
+
+            isCharacterImage = false;
         }
     }
 
@@ -47,5 +66,4 @@ public class CreateUIManager : MonoBehaviour
             _showCreateSceneUI.ShowCharacterImage();
         }
     }
-
 }
