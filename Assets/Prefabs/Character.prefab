@@ -48,7 +48,11 @@ MonoBehaviour:
   warriorData: {fileID: 11400000, guid: 721c713b97194a34399f642fbf4582c7, type: 2}
   mageData: {fileID: 11400000, guid: be59e564b3ae42744a37290a41f23926, type: 2}
   archerData: {fileID: 11400000, guid: 4d9b26331b6adc04f9147657ce731956, type: 2}
-  characterData: {fileID: 0}
+  warriorDefaultStat: {fileID: 11400000, guid: 93a5b888cf9716a4193b0eba5ade553b, type: 2}
+  mageDefaultStat: {fileID: 11400000, guid: 95ac77280b83952469efee3b71ed5a32, type: 2}
+  archerDefaultStat: {fileID: 11400000, guid: be8c9a6022fab7a4a831792252c3db0b, type: 2}
+  characterJobData: {fileID: 0}
+  _characterStat: {fileID: 0}
   characterName: 
 --- !u!114 &-3911614456998794601
 MonoBehaviour:

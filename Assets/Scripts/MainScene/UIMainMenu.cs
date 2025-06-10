@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UIMainMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject _character;
-
     [SerializeField] private Image characterImage;
 
     [SerializeField] private Sprite warriorSprite;
@@ -15,12 +13,14 @@ public class UIMainMenu : MonoBehaviour
 
     [SerializeField] private Text characterDataText;
 
-    [SerializeField] private Button inventoryButton;
-    [SerializeField] private Button statusButton;
+    public Button inventoryButton;
+    public Button statusButton;
+
+    private PlayerInfo playerInfo;
 
     void Start()
     {
-        _character = GameObject.Find("Character");
+        playerInfo = UIManager.Instance._playerInfo;
 
         SetCharacterImage();
         ShowCharacterDataText();
@@ -31,15 +31,20 @@ public class UIMainMenu : MonoBehaviour
     {
         characterImage.gameObject.SetActive(true);
 
-        if (_character.GetComponent<PlayerInfo>().characterData.jobId == 1)
+        if(playerInfo == null)
+        {
+            Debug.Log("ChCreateScene에서 게임을 Play해주세요!!");
+        }
+
+        if (playerInfo.characterJobData.jobId == 1)
         {
             characterImage.sprite = warriorSprite;
         }
-        else if (_character.GetComponent<PlayerInfo>().characterData.jobId == 2)
+        else if (playerInfo.characterJobData.jobId == 2)
         {
             characterImage.sprite = mageSprite;
         }
-        else if (_character.GetComponent<PlayerInfo>().characterData.jobId == 3)
+        else if (playerInfo.characterJobData.jobId == 3)
         {
             characterImage.sprite = archerSprite;
         }
@@ -47,8 +52,8 @@ public class UIMainMenu : MonoBehaviour
 
     void ShowCharacterDataText()
     {
-        characterDataText.text = $"이름 : {_character.GetComponent<PlayerInfo>().characterName} " +
-            $"\n{_character.GetComponent<PlayerInfo>().characterData.playerJobName}"; 
+        characterDataText.text = $"이름 : {playerInfo.characterName} " +
+            $"\n{playerInfo.characterJobData.playerJobName}"; 
     }
     
     void ShowButtonImage()
@@ -61,11 +66,19 @@ public class UIMainMenu : MonoBehaviour
     {
         inventoryButton.gameObject.SetActive(false);
         statusButton.gameObject.SetActive(false);
+
+        UIManager.Instance._uiInventory.inventoryImage.gameObject.SetActive(true);
+        UIManager.Instance._uiInventory.backMainMenuInInventory.gameObject.SetActive(true);
     }
 
     public void OpenStatus()
     {
         inventoryButton.gameObject.SetActive(false);
         statusButton.gameObject.SetActive(false);
+
+        UIManager.Instance._uiStatus.statusImage.gameObject.SetActive(true);
+        UIManager.Instance._uiStatus.backMainMenuInStatus.gameObject.SetActive(true);
+
+        UIManager.Instance._uiStatus.ShowCharacterStatusData();
     }
 }

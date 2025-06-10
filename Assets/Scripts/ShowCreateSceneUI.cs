@@ -27,12 +27,10 @@ public class ShowCreateSceneUI : MonoBehaviour
         rightArrow.SetActive(true);
     }
 
-    public void ClearCharacterImage()
+    public void ClearArrowImage()
     {
-        warriorImage.SetActive(false);
-        mageImage.SetActive(false);
-        archerImage.SetActive(false);
-        jobInfoText.text = " ";
+        leftArrow.SetActive(false);
+        rightArrow.SetActive(false);
     }
 
     public void ShowCharacterImage()
@@ -53,6 +51,15 @@ public class ShowCreateSceneUI : MonoBehaviour
         }
 
         jobInfoText.text = characterObject.GetComponent<PlayerInfo>().JobInfoPrompt(jobImageNumber);
+    }
+
+    public void ClearCharacterImage()
+    {
+        warriorImage.SetActive(false);
+        mageImage.SetActive(false);
+        archerImage.SetActive(false);
+
+        jobInfoText.text = " ";
     }
 
     public void ShowInputPlayerNameImage()

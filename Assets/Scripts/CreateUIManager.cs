@@ -7,12 +7,9 @@ using UnityEngine.SceneManagement;
 public class CreateUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject selectJobObjects;
-
-    [SerializeField] private GameObject characterObject;
-    [SerializeField] private Text playerName;
-
     private ShowCreateSceneUI _showCreateSceneUI;
-    private PlayerInfo _playerInfo;
+
+    [SerializeField] private Text playerName;
 
     bool isCharacterImage = false;
     bool isPlayerName = false;
@@ -20,7 +17,6 @@ public class CreateUIManager : MonoBehaviour
     private void Start()
     {
         _showCreateSceneUI = selectJobObjects.GetComponent<ShowCreateSceneUI>();
-        _playerInfo = characterObject.GetComponent<PlayerInfo>();
     }
     public void CreateButtonClick()
     {
@@ -36,12 +32,14 @@ public class CreateUIManager : MonoBehaviour
             }
             else
             {
-                _playerInfo.characterName = playerName.text;
+                UIManager.Instance._playerInfo.characterName = playerName.text;
+                UIManager.Instance._playerInfo.SetCharacterInfo();
                 SceneManager.LoadScene("MainScene");
             }
         }
         else
         {
+            _showCreateSceneUI.ClearArrowImage();
             _showCreateSceneUI.ClearCharacterImage();
             _showCreateSceneUI.ShowInputPlayerNameImage();
 
