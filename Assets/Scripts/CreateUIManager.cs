@@ -26,7 +26,7 @@ public class CreateUIManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("MainScene");
         }
     }
 
