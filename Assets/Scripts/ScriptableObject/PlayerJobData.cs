@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerData", menuName = "New PlayerData")]
-public class PlayerData : ScriptableObject
+[CreateAssetMenu(fileName = "PlayerJobData", menuName = "New PlayerJobData")]
+public class PlayerJobData : ScriptableObject
 {
     [Header("Info")]
+    public int jobId;
     public string playerJobName;
     public string jobDescription;
     public string jobDifficulty;

@@ -52,7 +52,7 @@ public class ShowCreateSceneUI : MonoBehaviour
             archerImage.SetActive(true);
         }
 
-        jobInfoText.text = characterObject.GetComponent<PlayerInfo>().jobInfoPrompt(jobImageNumber);
+        jobInfoText.text = characterObject.GetComponent<PlayerInfo>().JobInfoPrompt(jobImageNumber);
     }
 
     public void ShowInputPlayerNameImage()

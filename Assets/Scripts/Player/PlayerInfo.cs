@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    [SerializeField] private PlayerData warriorData;
-    [SerializeField] private PlayerData mageData;
-    [SerializeField] private PlayerData archerData;
+    [SerializeField] private PlayerJobData warriorData;
+    [SerializeField] private PlayerJobData mageData;
+    [SerializeField] private PlayerJobData archerData;
 
-    [SerializeField] private PlayerData characterData;
+    public PlayerJobData characterData;
+
+    private PlayerStatData _characterStat;
     public string characterName;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
 
+        _characterStat = GetComponent<PlayerStatData>();
+    }
 
-    public string jobInfoPrompt(int jobnumber)
+    public string JobInfoPrompt(int jobnumber)
     {
         if (jobnumber == 1)
         {
@@ -32,5 +39,19 @@ public class PlayerInfo : MonoBehaviour
         return str;
     }
 
+    public void SetCharacterInfo()
+    {
+        if (characterData.jobId == 1)
+        {
+            //_characterStat.attack +=
+        }
+        else if (characterData.jobId == 2)
+        {
 
+        }
+        else if (characterData.jobId == 3)
+        {
+            _characterStat.attack += 5;
+        }
+    }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475d576c9d359b24084a1827e1563d04, type: 3}
   m_Name: Archer
   m_EditorClassIdentifier: 
+  jobId: 3
   playerJobName: "\uC9C1\uC5C5 : \uAD81\uC218"
   jobDescription: "\uD2B9\uC9D5 : \uC6D0\uAC70\uB9AC \uACF5\uACA9\uC774 \uAC00\uB2A5\uD558\uB2E4"
   jobDifficulty: "\uB09C\uC774\uB3C4 : \uC5B4\uB824\uC6C0"
