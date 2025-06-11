@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerJobData : ScriptableObject
 {
     [Header("Info")]
-    public int jobId;
+    public JobType jobId;
     public string playerJobName;
     public string jobDescription;
     public string jobDifficulty;

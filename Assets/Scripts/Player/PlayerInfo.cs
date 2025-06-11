@@ -17,6 +17,8 @@ public class PlayerInfo : MonoBehaviour
     public PlayerStatData _characterStat;
     public string characterName;
 
+    public JobType characterJobType;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -43,18 +45,17 @@ public class PlayerInfo : MonoBehaviour
         return str;
     }
 
-    public void SetCharacterInfo()
+    public void AddDefaultStat()
     {
-        if (characterJobData.jobId == 1)
+        if (characterJobData.jobId == JobType.Warrior)
         {
             _characterStat.attack += warriorDefaultStat.defaultAttack;
             _characterStat.defence += warriorDefaultStat.defaultDefence;
             _characterStat.hp += warriorDefaultStat.defaultHp;
             _characterStat.mp += warriorDefaultStat.defaultMp;
             _characterStat.gold += warriorDefaultStat.defaultGold;
-
         }
-        else if (characterJobData.jobId == 2)
+        else if (characterJobData.jobId == JobType.Mage)
         {
             _characterStat.attack += mageDefaultStat.defaultAttack;
             _characterStat.defence += mageDefaultStat.defaultDefence;
@@ -62,7 +63,7 @@ public class PlayerInfo : MonoBehaviour
             _characterStat.mp += mageDefaultStat.defaultMp;
             _characterStat.gold += mageDefaultStat.defaultGold;
         }
-        else if (characterJobData.jobId == 3)
+        else if (characterJobData.jobId == JobType.Archer)
         {
             _characterStat.attack += archerDefaultStat.defaultAttack;
             _characterStat.defence += archerDefaultStat.defaultDefence;

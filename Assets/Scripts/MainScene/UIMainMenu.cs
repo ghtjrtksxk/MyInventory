@@ -36,15 +36,15 @@ public class UIMainMenu : MonoBehaviour
             Debug.Log("ChCreateScene에서 게임을 Play해주세요!!");
         }
 
-        if (playerInfo.characterJobData.jobId == 1)
+        if (playerInfo.characterJobData.jobId == JobType.Warrior)
         {
             characterImage.sprite = warriorSprite;
         }
-        else if (playerInfo.characterJobData.jobId == 2)
+        else if (playerInfo.characterJobData.jobId == JobType.Mage)
         {
             characterImage.sprite = mageSprite;
         }
-        else if (playerInfo.characterJobData.jobId == 3)
+        else if (playerInfo.characterJobData.jobId == JobType.Archer)
         {
             characterImage.sprite = archerSprite;
         }

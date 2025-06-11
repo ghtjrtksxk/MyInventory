@@ -33,7 +33,7 @@ public class CreateUIManager : MonoBehaviour
             else
             {
                 UIManager.Instance._playerInfo.characterName = playerName.text;
-                UIManager.Instance._playerInfo.SetCharacterInfo();
+                UIManager.Instance._playerInfo.AddDefaultStat();
                 SceneManager.LoadScene("MainScene");
             }
         }
