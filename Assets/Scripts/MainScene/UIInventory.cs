@@ -32,9 +32,13 @@ public class UIInventory : MonoBehaviour
                 if (!isEquip)
                 {
                     img.enabled = true;
+                    isEquip = true;
                 }
                 else
-                    images[0].enabled = false;    
+                {
+                    img.enabled = false;
+                    isEquip = false;
+                }
             } 
         }
         else
