@@ -10,8 +10,6 @@ public class UIInventory : MonoBehaviour
 
     public Text cantEquipText;
 
-    bool isEquip = false;
-
     public void CloseInventory()
     {
         inventoryImage.gameObject.SetActive(false);
@@ -23,23 +21,13 @@ public class UIInventory : MonoBehaviour
 
     public void ClickInventoryIcon(GameObject buttonObj)
     {
-        if (buttonObj.GetComponentInParent<WeaponEquipChecker>().CheckEquipable() == true)
-        {
-            Image[] images = buttonObj.GetComponentsInChildren<Image>(true);
+        WeaponEquipChecker _weaponEquipChecker = buttonObj.GetComponentInParent<WeaponEquipChecker>();
 
-            foreach (Image img in images)
-            {
-                if (!isEquip)
-                {
-                    img.enabled = true;
-                    isEquip = true;
-                }
-                else
-                {
-                    img.enabled = false;
-                    isEquip = false;
-                }
-            } 
+        if (_weaponEquipChecker.CheckJobCorrect())
+        {
+            _weaponEquipChecker.isEquip = !_weaponEquipChecker.isEquip;
+
+            buttonObj.transform.GetChild(0).GetComponent<Image>().enabled = _weaponEquipChecker.isEquip;
         }
         else
         {

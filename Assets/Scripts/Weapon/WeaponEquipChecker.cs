@@ -6,14 +6,14 @@ public class WeaponEquipChecker : MonoBehaviour
 {
     public WeaponStatData _weaponStatData;
 
-    bool isEquipped;
+    public bool isEquip = false;
 
     void Start()
     {
         _weaponStatData = GetComponent<WeaponStatData>();
     }
 
-    public bool CheckEquipable()
+    public bool CheckJobCorrect()
     {
         return UIManager.Instance._playerInfo.characterJobData.jobId == _weaponStatData._weaponScriptableObject.jobType;
     }
